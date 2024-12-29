@@ -7,7 +7,7 @@
  - options to display device name (alias), model, IP address, MAC id, and state
  - automatically scans for devices on your network
  - when processing is complted information on the display may be scroll up, down, left, or right
- - not all devices may be support, tested and working with these Kasa devices: HS120, HS200, HS220, KS230 
+ - not all devices may be support, tested and working with these Kasa devices: HS120, HS200, HS220, KS230, KP400
 
 
 ## Hardware
