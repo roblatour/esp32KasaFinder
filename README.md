@@ -1,9 +1,9 @@
 # ESP32 Kasa Finder
 
- An Arduino sketch to show the IP addresses and MAC Ids of your KASA Plugs and Switches on an inexpensive TFT touch Display
+ An Arduino sketch to show the IP addresses and MAC Ids of your Kasa plugs and switches on an inexpensive TFT touch display
  
- 
- 
+ ![photo](https://github.com/user-attachments/assets/f0374fde-ce70-42c8-bbcc-1d49fc5effe3)
+
  - options to display device name (alias), model, IP address, MAC id, and state
  - option to sort final display be device name (alias) or IP Address
  - when processing is complted information on the display may be scroll up, down, left, or right
