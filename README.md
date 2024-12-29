@@ -4,9 +4,9 @@
  
  ![photo](https://github.com/user-attachments/assets/f0374fde-ce70-42c8-bbcc-1d49fc5effe3)
 
- - options to display device name, model, IP address, MAC id, and state
+ - options to display device friendly name, model, IP address, MAC id, and state
  - when the searching for devices is complete the information on the display may be scroll up, down, left, or right by touch
- - option to sort final display be device name (alias) or IP Address
+ - option to sort final display be device friendly name or IP Address
  - tested and fully working with these Kasa devices: HS120, HS200, HS220, KS230
  - tested and partially working with this Kasa device: KP400 (see support library notes [here](https://github.com/roblatour/KasaSmartPlug) for more information)    
 
