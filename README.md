@@ -1,6 +1,6 @@
 # ESP32 Kasa Finder
 
- An Arduino sketch to show the IP addresses and MAC Ids of your Kasa plugs and switches on an inexpensive TFT touch display
+ An Arduino sketch to show the friendly names, network information, and other stuff of your Kasa plugs and switches on an inexpensive TFT touch display
  
  ![photo](https://github.com/user-attachments/assets/f0374fde-ce70-42c8-bbcc-1d49fc5effe3)
 
