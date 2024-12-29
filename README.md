@@ -5,10 +5,10 @@
  
  
  - options to display device name (alias), model, IP address, MAC id, and state
- - automatically scans for devices on your network
+ - option to sort final display be device name (alias) or IP Address
  - when processing is complted information on the display may be scroll up, down, left, or right
- - not all devices may be support, tested and working with these Kasa devices: HS120, HS200, HS220, KS230, KP400
-
+ - tested and fully working with these Kasa devices: HS120, HS200, HS220, KS230
+ - tested and partially working with this Kasa device: KP400 (see support library notes [here](https://github.com/roblatour/KasaSmartPlug) for more information)    
 
 ## Hardware
 - designed for and tested on this [ESP32 touch display](https://www.aliexpress.com/item/1005004502250619.html)

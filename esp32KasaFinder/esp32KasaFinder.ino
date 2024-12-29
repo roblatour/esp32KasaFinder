@@ -176,10 +176,10 @@ String createFormattedOutputLine(KASASmartPlug *p, includeEverything includeEver
 {
 
   const int aliasWidth = 30;
-  const int modelWidth = 10;
-  const int macWidth = 18;
   const int ipWidth = 17;
-  const int stateWidth = 5;
+  const int macWidth = 18;
+  const int modelWidth = 10;
+  const int stateWidth = 8;
 
   String formattedOutput = "";
 
@@ -196,7 +196,10 @@ String createFormattedOutputLine(KASASmartPlug *p, includeEverything includeEver
     formattedOutput += padString(String(p->model), modelWidth);
 
   if ((SETTINGS_SHOW_STATE) || (includeEveryThing == includeEverything::includeEverythingYes))
-    formattedOutput += padString(String((p->state) == 0 ? "off" : "on"), stateWidth);
+    if (String(p->model).indexOf("KP") == 0)
+      formattedOutput += padString("unknown", stateWidth);
+    else
+      formattedOutput += padString(String((p->state) == 0 ? "off" : "on"), stateWidth);
 
   return formattedOutput;
 }
@@ -327,11 +330,26 @@ void performDirectScan()
     sendOutput(String(count) + " devices found");
 }
 
+int ipToInt(const String &ip)
+{
+  int result = 0;
+  int shift = 24;
+  int start = 0;
+  int end = ip.indexOf('.');
+  while (end != -1)
+  {
+    result |= (ip.substring(start, end).toInt() << shift);
+    shift -= 8;
+    start = end + 1;
+    end = ip.indexOf('.', start);
+  }
+  result |= (ip.substring(start).toInt() << shift);
+  return result;
+}
+
 void reportCombinedResults()
 {
 
-  // the combined results are sorted by alias
-  
   virtualWindow->clear();
   virtualWindow->setColors(SETTINGS_COMBINED_RESULTS_TFT_COLOUR, TFT_BLACK);
 
@@ -354,15 +372,26 @@ void reportCombinedResults()
   }
   else
   {
-    Serial.println("Sorting devices by alias");
-    // Sort allDevices by alias
-    std::sort(allDevices.begin(), allDevices.end(), [](const KASASmartPlug &a, const KASASmartPlug &b)
-              { 
+    if (SETTINGS_SORT_BY_ALIAS)
+    {
+      sendOutput("Sorting devices by alias", addNewLine::addNewLineYes, sendToSerial::sendToSerialYes, sendToTFTDisplay::sendToTFTDisplayNo);
+      // Sort allDevices by alias
+      std::sort(allDevices.begin(), allDevices.end(), [](const KASASmartPlug &a, const KASASmartPlug &b)
+                { 
+              if (a.alias == nullptr && b.alias == nullptr) return false;
               if (a.alias == nullptr) return false;
               if (b.alias == nullptr) return true;
               return String(a.alias) < String(b.alias); });
+    }
+    else
+    {
+      sendOutput("Sorting devices by IP address", addNewLine::addNewLineYes, sendToSerial::sendToSerialYes, sendToTFTDisplay::sendToTFTDisplayNo);
+      // Sort allDevices by IP address
+      std::sort(allDevices.begin(), allDevices.end(), [](const KASASmartPlug &a, const KASASmartPlug &b)
+                { 
+              return ipToInt(a.ip_address) < ipToInt(b.ip_address); });
+    }
 
-    Serial.println("Sorting devices by alias done");
     for (int i = 0; i < count; i++)
     {
       KASASmartPlug *p = &allDevices[i];

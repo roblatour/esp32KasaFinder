@@ -1,3 +1,3 @@
 
-#define SECRET_WIFI_SSID              "Latour"	         
-#define SECRET_WIFI_PASSWORD          "shrek2donkey"           
+#define SECRET_WIFI_SSID              "**************"	         
+#define SECRET_WIFI_PASSWORD          "**************"           
