@@ -11,7 +11,7 @@
  - tested and partially working with this Kasa device: KP400 (see support library notes [here](https://github.com/roblatour/KasaSmartPlug) for more information)    
 
 ## Hardware
-- designed for and tested on this [ESP32 touch display](https://www.aliexpress.com/item/1005007654190509.html)
+- designed for and tested on this [ESP32 touch display](https://www.aliexpress.com/item/1005007523850273.html)
 
 ## Support ESP32 Kasa Finder
 
